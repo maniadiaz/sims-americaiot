@@ -1,0 +1,68 @@
+# ========================
+# Node.js / Package managers
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ========================
+# Environment variables
+# ========================
+.env
+.env.*
+!.env.example
+*.local
+
+# ========================
+# Logs
+# ========================
+logs/
+*.log
+
+# ========================
+# Build / Output
+# ========================
+dist/
+dist-ssr/
+build/
+
+# ========================
+# Runtime data
+# ========================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ========================
+# Coverage / Testing
+# ========================
+coverage/
+.nyc_output/
+
+# ========================
+# Cache
+# ========================
+.cache/
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.claude
+
+# ========================
+# OS
+# ========================
+.DS_Store
+Thumbs.db
