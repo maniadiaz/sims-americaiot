@@ -1,17 +1,32 @@
 const { User } = require('../models');
 
 /**
- * Get all users
+ * Get all users with pagination
  */
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.findAll({
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 15;
+    const offset = (page - 1) * limit;
+
+    const { count, rows: users } = await User.findAndCountAll({
+      limit,
+      offset,
       order: [['created_at', 'DESC']]
     });
 
+    const totalPages = Math.ceil(count / limit);
+
     res.json({
       success: true,
-      count: users.length,
+      pagination: {
+        total: count,
+        page,
+        limit,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1
+      },
       users
     });
   } catch (error) {
