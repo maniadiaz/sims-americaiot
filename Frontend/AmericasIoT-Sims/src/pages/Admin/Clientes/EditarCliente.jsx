@@ -35,7 +35,7 @@ const EditarCliente = () => {
     apellidos: '',
     email: '',
     username: '',
-    rol: 'usuario',
+    rol: 'user',
     status: 'activo'
   });
 
@@ -56,7 +56,7 @@ const EditarCliente = () => {
           apellidos: user.apellidos || '',
           email: user.email || '',
           username: user.username || '',
-          rol: user.rol || 'usuario',
+          rol: user.rol || 'user',
           status: user.status || 'activo'
         });
       } else {
@@ -344,7 +344,7 @@ const EditarCliente = () => {
                     disabled={saving}
                   >
                     <MenuItem value="admin">Administrador</MenuItem>
-                    <MenuItem value="usuario">Usuario</MenuItem>
+                    <MenuItem value="user">Usuario</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -375,7 +375,7 @@ const EditarCliente = () => {
                     disabled={saving}
                   >
                     <MenuItem value="activo">Activo</MenuItem>
-                    <MenuItem value="inactivo">Inactivo</MenuItem>
+                    <MenuItem value="bloqueado">Bloqueado</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
