@@ -486,7 +486,7 @@ const Clientes = () => {
         fullWidth
       >
         <DialogTitle sx={{ fontWeight: 600 }}>
-          Detalles del Usuario
+          Detalles del Cliente
         </DialogTitle>
         <DialogContent dividers>
           {selectedUser && (
