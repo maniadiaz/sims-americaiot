@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, TextField, Typography, Paper, Alert, CircularProgress, InputAdornment, IconButton } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper, Alert, CircularProgress, InputAdornment, IconButton, useTheme, useMediaQuery, } from '@mui/material';
 import { Login as LoginIcon, LockOutlined, Visibility, VisibilityOff } from '@mui/icons-material';
 import { authService } from '../../services';
 
@@ -12,6 +12,9 @@ const Login = () => {
   const navigate = useNavigate();
   const identifierRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -54,7 +57,6 @@ const Login = () => {
 
   const handleInputFocus = (ref) => {
     // Solo hacer scroll en dispositivos móviles (ancho menor a 900px)
-    const isMobile = window.innerWidth < 900;
 
     if (ref.current && isMobile) {
       setTimeout(() => {
@@ -93,7 +95,7 @@ const Login = () => {
       <Paper
         elevation={24}
         sx={{
-          width: '100%',
+          width: isMobile ? '80%' : '100%',
           maxWidth: { xs: '100%', sm: 440, md: 480 },
           padding: { xs: 3, sm: 4, md: 5 },
           borderRadius: { xs: 2, sm: 3, md: 4 },
