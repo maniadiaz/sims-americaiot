@@ -3,7 +3,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
 import Users from './pages/Users'
-import Clientes from './pages/Admin/Clientes'
+import Clientes, { EditarCliente } from './pages/Admin/Clientes'
 import Sims from './pages/Admin/Sims'
 import './App.css'
 
@@ -26,6 +26,15 @@ function App() {
         element={
           <ProtectedRoute requiredRole="admin">
             <Clientes />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/clientes/editar/:id"
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <EditarCliente />
           </ProtectedRoute>
         }
       />

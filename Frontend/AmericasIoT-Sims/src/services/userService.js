@@ -7,12 +7,14 @@ import apiClient from './api/apiClient';
 class UserService {
   /**
    * Get all users (Admin only)
-   * @returns {Promise} List of users
+   * @param {number} page - Page number (default: 1)
+   * @param {number} limit - Users per page (default: 15)
+   * @returns {Promise} List of users with pagination data
    */
-  async getUsers() {
+  async getUsers(page = 1, limit = 15) {
     try {
-      const response = await apiClient.get('/users');
-      return response.success ? response.data : [];
+      const response = await apiClient.get(`/users?page=${page}&limit=${limit}`);
+      return response;
     } catch (error) {
       console.error('Get users error:', error);
       throw error;
@@ -27,7 +29,7 @@ class UserService {
   async getUserById(userId) {
     try {
       const response = await apiClient.get(`/users/${userId}`);
-      return response.success ? response.data : null;
+      return response;
     } catch (error) {
       console.error('Get user error:', error);
       throw error;

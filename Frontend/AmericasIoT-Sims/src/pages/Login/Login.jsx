@@ -53,7 +53,10 @@ const Login = () => {
   };
 
   const handleInputFocus = (ref) => {
-    if (ref.current) {
+    // Solo hacer scroll en dispositivos móviles (ancho menor a 900px)
+    const isMobile = window.innerWidth < 900;
+
+    if (ref.current && isMobile) {
       setTimeout(() => {
         ref.current.scrollIntoView({
           behavior: 'smooth',
@@ -66,14 +69,14 @@ const Login = () => {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         backgroundSize: '400% 400%',
         animation: 'gradientShift 15s ease infinite',
-        padding: { xs: 2, sm: 3, md: 4 },
+        overflow: 'hidden',
         '@keyframes gradientShift': {
           '0%': {
             backgroundPosition: '0% 50%',
